@@ -1,6 +1,7 @@
 const inputValue = document.getElementById("input");
 const message = document.getElementById("message");
 const enter = document.getElementById("enter");
+let attempts = 0;
 const reply = [
   //0
   ["Hello!", "Hi!", "Hey!", "Hi there!"],
@@ -26,7 +27,7 @@ const reply = [
   ],
   //3
   [
-    "Kiddo, don't waste my time",
+    "Kiddo, don't waste my time.",
     "Pal, you understand English?",
     "See you later, moron!",
     "Dude, are you sure you can read?",
@@ -52,16 +53,15 @@ document.onreadystatechange = function () {
   }
 };
 const callback = function () {
-  console.log("callback");
   let input = inputValue.value;
   inputValue.value = "";
   output(input);
 };
 function output(input) {
+  attempts++;
   const regex = /[^\w\s\d]/gi;
-  let response;
   let text = input.toLowerCase().replace(regex, "");
-  user(text);
+  user(input);
   if (text.includes("yes")) {
     console.log("contains YES");
     let messagesYes = reply[1];
@@ -72,10 +72,14 @@ function output(input) {
     let messagesNo = reply[2];
     let replyNo = messagesNo[Math.floor(Math.random() * messagesNo.length)];
     bot(replyNo);
-  } else {
+  } else if (attempts > 3) {
     let messagesMad = reply[3];
     let replyMad = messagesMad[Math.floor(Math.random() * messagesMad.length)];
     bot(replyMad);
+    bot("Bye!");
+    inputValue.disabled = true;
+  } else {
+    bot("I didn't understand, can you please try again.");
   }
 }
 
