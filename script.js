@@ -25,7 +25,14 @@ const reply = [
     "Go on...",
   ],
   //3
-  ["Goodbye", "See you later, moron!", "Dude, are you sure you can read?"],
+  [
+    "Kiddo, don't waste my time",
+    "Pal, you understand English?",
+    "See you later, moron!",
+    "Dude, are you sure you can read?",
+  ],
+  //4
+  ["Goodbye", "Bye!"],
 ];
 
 // document.addEventListener("DOMContentLoaded", () => {}) can also be used
@@ -57,10 +64,18 @@ function output(input) {
   user(text);
   if (text.includes("yes")) {
     console.log("contains YES");
+    let messagesYes = reply[1];
+    let replyYes = messagesYes[Math.floor(Math.random() * messagesYes.length)];
+    bot(replyYes);
   } else if (text.includes("no")) {
     console.log("contains NO");
+    let messagesNo = reply[2];
+    let replyNo = messagesNo[Math.floor(Math.random() * messagesNo.length)];
+    bot(replyNo);
   } else {
-    bot("I didn't understand, can you please try again");
+    let messagesMad = reply[3];
+    let replyMad = messagesMad[Math.floor(Math.random() * messagesMad.length)];
+    bot(replyMad);
   }
 }
 
