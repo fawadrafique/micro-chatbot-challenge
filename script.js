@@ -63,24 +63,23 @@ function output(input) {
   let text = input.toLowerCase().replace(regex, "");
   user(input);
   if (text.includes("yes")) {
-    console.log("contains YES");
-    let messagesYes = reply[1];
-    let replyYes = messagesYes[Math.floor(Math.random() * messagesYes.length)];
-    bot(replyYes);
+    attempts--;
+    response(1);
   } else if (text.includes("no")) {
-    console.log("contains NO");
-    let messagesNo = reply[2];
-    let replyNo = messagesNo[Math.floor(Math.random() * messagesNo.length)];
-    bot(replyNo);
+    attempts--;
+    response(2);
   } else if (attempts > 3) {
-    let messagesMad = reply[3];
-    let replyMad = messagesMad[Math.floor(Math.random() * messagesMad.length)];
-    bot(replyMad);
-    bot("Bye!");
+    response(3);
+    response(4);
     inputValue.disabled = true;
   } else {
     bot("I didn't understand, can you please try again.");
   }
+}
+function response(n) {
+  let responses = reply[n];
+  let response = responses[Math.floor(Math.random() * responses.length)];
+  bot(response);
 }
 
 function bot(reply) {
