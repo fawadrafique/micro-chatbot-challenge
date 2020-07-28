@@ -1,55 +1,33 @@
 const inputValue = document.getElementById("input");
 const message = document.getElementById("message");
 const enter = document.getElementById("enter");
-const trigger = [
-  //0
-  ["hi", "hey", "hello"],
-  //1
-  ["how are you", "how are things"],
-  //2
-  ["what is going on", "what is up"],
-  //3
-  ["happy", "good", "well", "fantastic", "cool"],
-  //4
-  ["bad", "bored", "tired", "sad"],
-  //5
-  ["tell me story", "tell me joke"],
-  //6
-  ["thanks", "thank you"],
-  //7
-  ["bye", "good bye", "goodbye"],
-];
-
 const reply = [
   //0
   ["Hello!", "Hi!", "Hey!", "Hi there!"],
   //1
   [
-    "Fine... how are you?",
-    "Pretty well, how are you?",
-    "Fantastic, how are you?",
+    "Nothing much",
+    "Exciting things!",
+    "Glad to hear it",
+    "Fantastic",
+    "Pretty well",
+    "Same",
+    "You're welcome",
   ],
   //2
-  ["Nothing much", "Exciting things!"],
+  [
+    "Why?",
+    "Cheer up buddy",
+    "What about?",
+    "Once upon a time...",
+    "No problem",
+    "I'm listening...",
+    "Go on...",
+  ],
   //3
-  ["Glad to hear it"],
-  //4
-  ["Why?", "Cheer up buddy"],
-  //5
-  ["What about?", "Once upon a time..."],
-  //6
-  ["You're welcome", "No problem"],
-  //7
-  ["Goodbye", "See you later"],
+  ["Goodbye", "See you later, moron!", "Dude, are you sure you can read?"],
 ];
 
-const alternative = [
-  "Same",
-  "Go on...",
-  "Try again",
-  "I'm listening...",
-  "Bro...",
-];
 // document.addEventListener("DOMContentLoaded", () => {}) can also be used
 document.onreadystatechange = function () {
   if (document.readyState === "interactive") {
@@ -77,6 +55,13 @@ function output(input) {
   let response;
   let text = input.toLowerCase().replace(regex, "");
   user(text);
+  if (text.includes("yes")) {
+    console.log("contains YES");
+  } else if (text.includes("no")) {
+    console.log("contains NO");
+  } else {
+    bot("I didn't understand, can you please try again");
+  }
 }
 
 function bot(reply) {
