@@ -1,11 +1,10 @@
 # 💬 Micro chatbot challenge
 
 - Repository name: `micro-chatbot-challenge`
-- Owner: [Muhammad Fawad Rafique](https://github.com/fawadrafique)
 - Type of Challenge: `learning`
 - Written in : `HTML, CSS and JS`
-- Progress: `90% completed`
-- GitHub Page: [Click here](https://github.com/fawadrafique)
+- Build: `90% completed`
+- GitHub Page: [Click here](https://fawadrafique.github.io/micro-chatbot-challenge/)
 
 > Create a _micro_ chatbot
 
