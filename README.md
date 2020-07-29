@@ -4,7 +4,6 @@
 - Type of Challenge: `learning`
 - Written in : `HTML, CSS and JS`
 - Build: `90% completed`
-- GitHub Page: [Click here](https://fawadrafique.github.io/micro-chatbot-challenge/)
 
 > Create a _micro_ chatbot
 
