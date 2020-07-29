@@ -1,11 +1,14 @@
 const inputValue = document.getElementById("input");
 const message = document.getElementById("message");
+const loading = document.getElementById("inprogress");
 const enter = document.getElementById("enter");
 let attempts = 0;
 const reply = [
-  //0
+  //Response 1
   ["Hello!", "Hi!", "Hey!", "Hi there!"],
-  //1
+  //Response 2
+  ["How do you feel today?", "How you doing today?", "How's everything?"],
+  //Response 3
   [
     "Nothing much",
     "Exciting things!",
@@ -15,7 +18,7 @@ const reply = [
     "Same",
     "You're welcome",
   ],
-  //2
+  //Response 4
   [
     "Why?",
     "Cheer up buddy",
@@ -25,18 +28,16 @@ const reply = [
     "I'm listening...",
     "Go on...",
   ],
-  //3
+  //Response 5
   [
     "Kiddo, don't waste my time.",
     "Pal, you understand English?",
     "See you later, moron!",
     "Dude, are you sure you can read?",
   ],
-  //4
+  //Response 6
   ["Goodbye", "Bye!"],
 ];
-
-// document.addEventListener("DOMContentLoaded", () => {}) can also be used
 document.onreadystatechange = function () {
   if (document.readyState === "interactive") {
     enter.onclick = () => callback();
@@ -45,11 +46,8 @@ document.onreadystatechange = function () {
         callback();
       }
     });
-    let firsteGreetings = reply[0];
-    let firsteGreeting = `${
-      firsteGreetings[Math.floor(Math.random() * firsteGreetings.length)]
-    } how do you feel today?`;
-    bot(firsteGreeting);
+    response(0);
+    response(1);
   }
 };
 const callback = function () {
@@ -62,19 +60,23 @@ function output(input) {
   const regex = /[^\w\s\d]/gi;
   let text = input.toLowerCase().replace(regex, "");
   user(input);
-  if (text.includes("yes")) {
-    attempts--;
-    response(1);
-  } else if (text.includes("no")) {
-    attempts--;
-    response(2);
-  } else if (attempts > 3) {
-    response(3);
-    response(4);
-    inputValue.disabled = true;
-  } else {
-    bot("I didn't understand, can you please try again.");
-  }
+  loading.classList.add("is-loading");
+  setTimeout(() => {
+    loading.classList.remove("is-loading");
+    if (text.includes("yes")) {
+      attempts--;
+      response(2);
+    } else if (text.includes("no")) {
+      attempts--;
+      response(3);
+    } else if (attempts > 3) {
+      response(4);
+      response(5);
+      inputValue.disabled = true;
+    } else {
+      bot("I didn't understand, can you please try again.");
+    }
+  }, 2000);
 }
 function response(n) {
   let responses = reply[n];
