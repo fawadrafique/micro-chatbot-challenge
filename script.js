@@ -60,8 +60,10 @@ function output(input) {
   const regex = /[^\w\s\d]/gi;
   let text = input.toLowerCase().replace(regex, "");
   user(input);
+  inputValue.placeholder = "in progress...";
   loading.classList.add("is-loading");
   setTimeout(() => {
+    inputValue.placeholder = "Type something...";
     loading.classList.remove("is-loading");
     if (text.includes("yes")) {
       attempts--;
