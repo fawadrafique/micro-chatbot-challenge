@@ -46,6 +46,7 @@ document.onreadystatechange = function () {
         callback();
       }
     });
+    //First greeting
     response(0);
     response(1);
   }
@@ -55,6 +56,7 @@ const callback = function () {
   inputValue.value = "";
   output(input);
 };
+// Response based upon input messages
 function output(input) {
   attempts++;
   const regex = /[^\w\s\d]/gi;
@@ -80,16 +82,18 @@ function output(input) {
     }
   }, 2000);
 }
+//Response selector
 function response(n) {
   let responses = reply[n];
   let response = responses[Math.floor(Math.random() * responses.length)];
   bot(response);
 }
-
+//Bot reply
 function bot(reply) {
   message.innerHTML += `<p><span class="has-text-link has-text-weight-bold">Bot: </span>
   <span class="has-text-black-bis">${reply}</span></p>`;
 }
+//User input message
 function user(reply) {
   message.innerHTML += `<p><span class="has-text-link has-text-weight-bold">You: </span>
     <span class="has-text-black-bis">${reply}</span></p>`;
